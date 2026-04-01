@@ -92,16 +92,13 @@
   100% { transform: scale(1); }
 }
 
-/* ── Cat image — remove black background ── */
-/* mix-blend-mode: screen removes pure black and near-black areas cleanly */
+/* ── Cat image — transparent PNG, no blend mode needed ── */
 .cat-img {
   width: 100%;
   height: auto;
   object-fit: contain;
   display: block;
-  mix-blend-mode: screen;
-  /* Boost brightness/contrast so cat colours stay vivid after screen blend */
-  filter: brightness(1.08) contrast(1.1) drop-shadow(0 4px 18px rgba(0,0,0,0.4));
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.45));
 }
 
 .note-label {
