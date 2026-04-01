@@ -3,43 +3,36 @@ import SoundToggle from '../components/SoundToggle'
 import { playNote } from '../utils/soundEngine'
 import './MainPage.css'
 
-// Cat positions matching the design mockup
-// Cat_Re = top-left, Cat_So = top-right, Cat_Do = center, Cat_Fa = bottom-left, Cat_Mi = bottom-right
 const CATS = [
   {
     id: 'Re',
     note: 'Re',
     image: '/assets/Cat_Re.png',
-    label: 'Re',
-    style: { top: '18%', left: '15%', width: '180px' },
+    style: { top: '16%', left: '14%', width: '190px' },
   },
   {
     id: 'So',
     note: 'So',
     image: '/assets/Cat_So.png',
-    label: 'So',
-    style: { top: '12%', right: '20%', width: '140px' },
+    style: { top: '10%', right: '18%', width: '145px' },
   },
   {
     id: 'Do',
     note: 'Do',
     image: '/assets/Cat_Do.png',
-    label: 'Do',
-    style: { top: '28%', left: '50%', transform: 'translateX(-50%)', width: '200px' },
+    style: { top: '26%', left: '50%', transform: 'translateX(-50%)', width: '205px' },
   },
   {
     id: 'Fa',
     note: 'Fa',
     image: '/assets/Cat_Fa.png',
-    label: 'Fa',
-    style: { bottom: '12%', left: '14%', width: '190px' },
+    style: { bottom: '10%', left: '13%', width: '195px' },
   },
   {
     id: 'Mi',
     note: 'Mi',
     image: '/assets/Cat_Mi.png',
-    label: 'Mi',
-    style: { bottom: '8%', right: '12%', width: '185px' },
+    style: { bottom: '6%', right: '10%', width: '188px' },
   },
 ]
 
@@ -49,7 +42,7 @@ function MainPage({ soundMode, onToggleSound, onBack }) {
   const handleCatClick = (note, id) => {
     playNote(note, soundMode)
     setActiveNote(id)
-    setTimeout(() => setActiveNote(null), 400)
+    setTimeout(() => setActiveNote(null), 320)
   }
 
   return (
@@ -75,8 +68,8 @@ function MainPage({ soundMode, onToggleSound, onBack }) {
           onClick={() => handleCatClick(cat.note, cat.id)}
           aria-label={`Play ${cat.note}`}
         >
-          <img src={cat.image} alt={cat.label} className="cat-img" />
-          <span className="note-label">{cat.label}</span>
+          <img src={cat.image} alt={cat.id} className="cat-img" />
+          <span className="note-label">{cat.note}</span>
         </button>
       ))}
     </div>

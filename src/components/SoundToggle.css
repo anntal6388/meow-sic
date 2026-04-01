@@ -1,58 +1,54 @@
 .sound-toggle {
   display: flex;
   align-items: center;
-  width: 90px;
-  height: 44px;
+  width: 96px;
+  height: 46px;
   border-radius: 50px;
   background-color: var(--cream);
   cursor: pointer;
   position: relative;
-  padding: 4px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.22);
   user-select: none;
+  padding: 0 6px;
+  justify-content: space-between;
 }
 
-.toggle-knob {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: var(--mid-green);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  position: absolute;
-  left: 4px;
-  flex-shrink: 0;
-  z-index: 2;
-}
-
-.knob-right {
-  transform: translateX(46px);
-}
-
-.knob-left {
-  transform: translateX(0px);
-}
-
+.toggle-icon-left,
 .toggle-icon-right {
-  position: absolute;
-  right: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 30px;
   height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  flex-shrink: 0;
 }
 
-.knob-icon {
-  width: 22px;
-  height: 22px;
+.toggle-icon-img {
+  width: 26px;
+  height: 26px;
   object-fit: contain;
-  transition: opacity 0.3s ease;
+  border-radius: 50%;
 }
 
-.piano-knob-icon {
-  filter: invert(0%) brightness(0.3);
+/* The sliding green knob covers one icon at a time */
+.toggle-knob {
+  position: absolute;
+  width: 40px;
+  height: 38px;
+  border-radius: 50px;
+  background-color: var(--mid-green);
+  top: 4px;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+/* Cat mode: knob covers the LEFT (cat icon) → cat is active */
+.knob-left {
+  left: 4px;
+}
+
+/* Piano mode: knob covers the RIGHT (piano icon) → piano is active */
+.knob-right {
+  left: 52px;
 }

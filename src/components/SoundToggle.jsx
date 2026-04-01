@@ -9,22 +9,26 @@ function SoundToggle({ soundMode, onToggle }) {
       onClick={onToggle}
       title={isCat ? 'Switch to Piano' : 'Switch to Cat sounds'}
     >
-      <div className={`toggle-knob ${isCat ? 'knob-right' : 'knob-left'}`}>
+      {/* Left side: cat icon */}
+      <div className="toggle-icon-left">
         <img
-          src={isCat ? '/assets/Cat_icon.png' : '/assets/Cat_icon.png'}
+          src="/assets/Cat_icon.jpg"
           alt="cat"
-          className="knob-icon cat-knob-icon"
-          style={{ opacity: isCat ? 1 : 0.6 }}
+          className="toggle-icon-img"
         />
       </div>
+
+      {/* Right side: piano icon */}
       <div className="toggle-icon-right">
         <img
-          src="/assets/Piano_music_icon.png"
+          src="/assets/Piano_music_icon.webp"
           alt="piano"
-          className="knob-icon piano-knob-icon"
-          style={{ opacity: isCat ? 0.6 : 1 }}
+          className="toggle-icon-img"
         />
       </div>
+
+      {/* Sliding knob */}
+      <div className={`toggle-knob ${isCat ? 'knob-left' : 'knob-right'}`} />
     </div>
   )
 }
