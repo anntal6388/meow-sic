@@ -1,0 +1,88 @@
+.landing-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bg-image {
+  position: absolute;
+  inset: 0;
+  background: url('/assets/Background.jpg') center center / cover no-repeat;
+  filter: blur(2px) brightness(0.92);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 51, 35, 0.08);
+  z-index: 1;
+}
+
+.toggle-wrapper {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  z-index: 10;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.landing-title {
+  font-family: 'Gabriela', serif;
+  font-size: clamp(52px, 8vw, 90px);
+  color: var(--cream);
+  text-align: center;
+  line-height: 1.15;
+  text-shadow:
+    0 2px 20px rgba(10, 51, 35, 0.4),
+    0 4px 40px rgba(10, 51, 35, 0.2);
+  animation: fadeInDown 0.9s ease both;
+}
+
+.play-btn {
+  font-family: 'Playwrite US Trad', cursive;
+  font-size: 20px;
+  color: var(--dark-green);
+  background: var(--cream);
+  border: none;
+  border-radius: 50px;
+  padding: 14px 48px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 4px 20px rgba(10, 51, 35, 0.2);
+  animation: fadeInUp 1s 0.3s ease both;
+  letter-spacing: 0.5px;
+}
+
+.play-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 32px rgba(10, 51, 35, 0.3);
+  background: #fffff0;
+}
+
+.play-btn:active {
+  transform: scale(0.97);
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

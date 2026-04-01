@@ -1,0 +1,58 @@
+.sound-toggle {
+  display: flex;
+  align-items: center;
+  width: 90px;
+  height: 44px;
+  border-radius: 50px;
+  background-color: var(--cream);
+  cursor: pointer;
+  position: relative;
+  padding: 4px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  user-select: none;
+}
+
+.toggle-knob {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--mid-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  left: 4px;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.knob-right {
+  transform: translateX(46px);
+}
+
+.knob-left {
+  transform: translateX(0px);
+}
+
+.toggle-icon-right {
+  position: absolute;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.knob-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+}
+
+.piano-knob-icon {
+  filter: invert(0%) brightness(0.3);
+}

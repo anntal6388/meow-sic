@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Playwrite+US+Trad:ital,wght@0,100..400;1,100..400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-green: #0A3323;
+  --mid-green: #839958;
+  --cream: #F7F4D5;
+  --pink: #D3968C;
+  --teal: #105666;
+}
+
+body {
+  font-family: 'Gabriela', serif;
+  overflow: hidden;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+}

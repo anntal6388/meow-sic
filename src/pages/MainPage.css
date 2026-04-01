@@ -1,0 +1,173 @@
+.main-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-image {
+  position: absolute;
+  inset: 0;
+  background: url('/assets/Background.jpg') center center / cover no-repeat;
+  filter: blur(2px) brightness(0.92);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 51, 35, 0.08);
+  z-index: 1;
+}
+
+.toggle-wrapper {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  z-index: 10;
+}
+
+.back-btn {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  z-index: 10;
+  font-family: 'Playwrite US Trad', cursive;
+  font-size: 14px;
+  color: var(--cream);
+  background: rgba(10, 51, 35, 0.45);
+  border: 1px solid rgba(247, 244, 213, 0.3);
+  border-radius: 50px;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.back-btn:hover {
+  background: rgba(10, 51, 35, 0.65);
+  transform: translateX(-2px);
+}
+
+.mode-label {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  font-family: 'Playwrite US Trad', cursive;
+  font-size: 13px;
+  color: var(--cream);
+  background: rgba(10, 51, 35, 0.4);
+  border-radius: 50px;
+  padding: 6px 20px;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.5px;
+}
+
+/* Cat buttons */
+.cat-btn {
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 5;
+  transition: transform 0.15s ease;
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.35));
+}
+
+.cat-btn:hover {
+  transform: scale(1.07) translateY(-4px) !important;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.45));
+}
+
+.cat-btn:hover .note-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cat-btn.cat-active {
+  animation: catBounce 0.35s ease;
+}
+
+.cat-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* Remove black background from cat images */
+  mix-blend-mode: normal;
+}
+
+/* Handle black bg cats - use mix-blend-mode screen to remove black bg */
+.cat-btn .cat-img {
+  mix-blend-mode: lighten;
+  border-radius: 12px;
+}
+
+.note-label {
+  font-family: 'Gabriela', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cream);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  background: rgba(10, 51, 35, 0.55);
+  border-radius: 20px;
+  padding: 3px 14px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+/* Override for Do cat that has "Miau?" text already */
+.cat-btn[aria-label="Play Do"] .note-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes catBounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.18) translateY(-8px) !important; }
+  60% { transform: scale(0.94) translateY(2px) !important; }
+  100% { transform: scale(1); }
+}
+
+/* Floating animation for cats at rest */
+.cat-btn:nth-child(3) { animation: float1 3.5s ease-in-out infinite; }
+.cat-btn:nth-child(4) { animation: float2 4s ease-in-out infinite 0.5s; }
+.cat-btn:nth-child(5) { animation: float3 3.8s ease-in-out infinite 1s; }
+.cat-btn:nth-child(6) { animation: float1 4.2s ease-in-out infinite 0.3s; }
+.cat-btn:nth-child(7) { animation: float2 3.6s ease-in-out infinite 0.8s; }
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes float3 {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+/* Override float for cat-active */
+.cat-btn.cat-active {
+  animation: catBounce 0.35s ease !important;
+}
+
+/* Fix for cats with black bg - lighten blend */
+.cat-Do .cat-img,
+.cat-Re .cat-img,
+.cat-Mi .cat-img,
+.cat-Fa .cat-img,
+.cat-So .cat-img {
+  mix-blend-mode: lighten;
+}
