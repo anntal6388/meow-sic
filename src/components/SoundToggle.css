@@ -15,8 +15,8 @@
 
 .toggle-icon-left,
 .toggle-icon-right {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,11 +24,19 @@
   flex-shrink: 0;
 }
 
-.toggle-icon-img {
-  width: 26px;
-  height: 26px;
+/* Cat icon - already has transparent bg, just size it up */
+.cat-icon-img {
+  width: 28px;
+  height: 28px;
   object-fit: contain;
-  border-radius: 50%;
+}
+
+/* Piano icon - remove white background using mix-blend-mode multiply */
+.piano-icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 /* The sliding green knob covers one icon at a time */
@@ -43,12 +51,12 @@
   z-index: 1;
 }
 
-/* Cat mode: knob covers the LEFT (cat icon) → cat is active */
-.knob-left {
-  left: 4px;
-}
-
-/* Piano mode: knob covers the RIGHT (piano icon) → piano is active */
+/* Piano mode (default): knob on RIGHT covers piano icon */
 .knob-right {
   left: 52px;
+}
+
+/* Cat mode: knob on LEFT covers cat icon */
+.knob-left {
+  left: 4px;
 }

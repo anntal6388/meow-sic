@@ -65,7 +65,7 @@
   white-space: nowrap;
 }
 
-/* Cat buttons — no hover movement, stays still */
+/* ── Cat buttons ── */
 .cat-btn {
   position: absolute;
   background: none;
@@ -77,43 +77,40 @@
   align-items: center;
   gap: 4px;
   z-index: 5;
-  /* No transform transitions at rest */
-  transition: transform 0.12s ease;
-  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.5));
+  /* NO floating animation, NO hover movement — stays perfectly still */
+  transition: none;
 }
 
-/* Only scale up slightly on click — no hover movement */
-.cat-btn:active {
-  transform: scale(1.12) !important;
-}
-
-/* Click bounce animation */
-.cat-btn.cat-active {
-  animation: catPop 0.3s ease forwards;
+/* Pop only on click */
+.cat-btn.cat-active .cat-img {
+  animation: catPop 0.32s ease forwards;
 }
 
 @keyframes catPop {
   0%   { transform: scale(1); }
-  50%  { transform: scale(1.15); }
+  45%  { transform: scale(1.14); }
   100% { transform: scale(1); }
 }
 
-/* Remove black background from cat images using mix-blend-mode */
+/* ── Cat image — remove black background ── */
+/* mix-blend-mode: screen removes pure black and near-black areas cleanly */
 .cat-img {
   width: 100%;
   height: auto;
   object-fit: contain;
-  mix-blend-mode: lighten;
   display: block;
+  mix-blend-mode: screen;
+  /* Boost brightness/contrast so cat colours stay vivid after screen blend */
+  filter: brightness(1.08) contrast(1.1) drop-shadow(0 4px 18px rgba(0,0,0,0.4));
 }
 
 .note-label {
   font-family: 'Gabriela', serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--cream);
   text-shadow: 0 1px 6px rgba(0,0,0,0.7);
-  background: rgba(10, 51, 35, 0.55);
+  background: rgba(10, 51, 35, 0.6);
   border-radius: 20px;
   padding: 2px 14px;
   backdrop-filter: blur(4px);

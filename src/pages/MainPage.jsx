@@ -3,36 +3,42 @@ import SoundToggle from '../components/SoundToggle'
 import { playNote } from '../utils/soundEngine'
 import './MainPage.css'
 
+// Positions matching your design mockup exactly
 const CATS = [
   {
     id: 'Re',
     note: 'Re',
     image: '/assets/Cat_Re.png',
-    style: { top: '16%', left: '14%', width: '190px' },
+    label: 'Re',
+    style: { top: '20%', left: '13%', width: '170px' },
   },
   {
     id: 'So',
     note: 'So',
     image: '/assets/Cat_So.png',
-    style: { top: '10%', right: '18%', width: '145px' },
+    label: 'So',
+    style: { top: '14%', right: '18%', width: '130px' },
   },
   {
     id: 'Do',
     note: 'Do',
     image: '/assets/Cat_Do.png',
-    style: { top: '26%', left: '50%', transform: 'translateX(-50%)', width: '205px' },
+    label: 'Do',
+    style: { top: '26%', left: '50%', transform: 'translateX(-50%)', width: '195px' },
   },
   {
     id: 'Fa',
     note: 'Fa',
     image: '/assets/Cat_Fa.png',
-    style: { bottom: '10%', left: '13%', width: '195px' },
+    label: 'Fa',
+    style: { bottom: '14%', left: '13%', width: '185px' },
   },
   {
     id: 'Mi',
     note: 'Mi',
     image: '/assets/Cat_Mi.png',
-    style: { bottom: '6%', right: '10%', width: '188px' },
+    label: 'Mi',
+    style: { bottom: '10%', right: '11%', width: '180px' },
   },
 ]
 
@@ -42,7 +48,7 @@ function MainPage({ soundMode, onToggleSound, onBack }) {
   const handleCatClick = (note, id) => {
     playNote(note, soundMode)
     setActiveNote(id)
-    setTimeout(() => setActiveNote(null), 320)
+    setTimeout(() => setActiveNote(null), 350)
   }
 
   return (
@@ -68,8 +74,8 @@ function MainPage({ soundMode, onToggleSound, onBack }) {
           onClick={() => handleCatClick(cat.note, cat.id)}
           aria-label={`Play ${cat.note}`}
         >
-          <img src={cat.image} alt={cat.id} className="cat-img" />
-          <span className="note-label">{cat.note}</span>
+          <img src={cat.image} alt={cat.label} className="cat-img" />
+          <span className="note-label">{cat.label}</span>
         </button>
       ))}
     </div>

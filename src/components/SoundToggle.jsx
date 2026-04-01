@@ -12,18 +12,18 @@ function SoundToggle({ soundMode, onToggle }) {
       {/* Left side: cat icon */}
       <div className="toggle-icon-left">
         <img
-          src="/assets/Cat_icon.jpg"
+          src="/assets/Cat_icon.png"
           alt="cat"
-          className="toggle-icon-img"
+          className="toggle-icon-img cat-icon-img"
         />
       </div>
 
       {/* Right side: piano icon */}
       <div className="toggle-icon-right">
         <img
-          src="/assets/Piano_music_icon.webp"
+          src="/assets/Piano_music_icon.png"
           alt="piano"
-          className="toggle-icon-img"
+          className="toggle-icon-img piano-icon-img"
         />
       </div>
 
