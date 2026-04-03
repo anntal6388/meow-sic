@@ -3,6 +3,7 @@
   height: 100vh;
   position: relative;
   overflow: hidden;
+  touch-action: none; /* prevent scroll hijack during drag */
 }
 
 .bg-image {
@@ -25,14 +26,14 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  z-index: 10;
+  z-index: 100;
 }
 
 .back-btn {
   position: absolute;
   top: 24px;
   left: 20px;
-  z-index: 10;
+  z-index: 100;
   font-family: 'Playwrite US Trad', cursive;
   font-size: 13px;
   color: var(--cream);
@@ -54,7 +55,7 @@
   bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
+  z-index: 100;
   font-family: 'Playwrite US Trad', cursive;
   font-size: 12px;
   color: var(--cream);
@@ -65,28 +66,62 @@
   white-space: nowrap;
 }
 
-/* ── Cat buttons ── */
+.drag-hint {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  font-family: 'Playwrite US Trad', cursive;
+  font-size: 11px;
+  color: rgba(247, 244, 213, 0.75);
+  background: rgba(10, 51, 35, 0.3);
+  border-radius: 50px;
+  padding: 4px 14px;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+  pointer-events: none;
+  animation: hintFade 3s 1.5s ease forwards;
+}
+
+@keyframes hintFade {
+  0%   { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ── Cat draggable div ── */
 .cat-btn {
   position: absolute;
   background: none;
   border: none;
-  cursor: pointer;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  z-index: 5;
-  transition: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  transition: filter 0.15s ease, transform 0.15s ease;
+  width: clamp(90px, 13vw, 170px);
 }
 
+/* While dragging — lift shadow */
+.cat-btn.is-dragging {
+  filter: drop-shadow(0 12px 28px rgba(0,0,0,0.55));
+  transform: scale(1.06);
+  transition: none; /* instant while dragging */
+}
+
+/* Tap/click pop */
 .cat-btn.cat-active .cat-img {
   animation: catPop 0.32s ease forwards;
 }
 
 @keyframes catPop {
   0%   { transform: scale(1); }
-  45%  { transform: scale(1.14); }
+  45%  { transform: scale(1.16); }
   100% { transform: scale(1); }
 }
 
@@ -95,7 +130,8 @@
   height: auto;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+  pointer-events: none; /* let parent div handle events */
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.38));
 }
 
 .note-label {
@@ -111,93 +147,9 @@
   white-space: nowrap;
 }
 
-/* ═══════════════════════════════════════
-   DESKTOP positions (>= 600px)
-   5 cats in a loose W shape, closer together
-═══════════════════════════════════════ */
-
-/* Re — top left */
-.cat-pos-re {
-  top: 18%;
-  left: 18%;
-  width: clamp(100px, 13vw, 175px);
-}
-
-/* So — top right */
-.cat-pos-so {
-  top: 12%;
-  right: 20%;
-  width: clamp(80px, 10vw, 140px);
-}
-
-/* Do — center */
-.cat-pos-do {
-  top: 24%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: clamp(110px, 14vw, 190px);
-}
-
-/* Fa — bottom left */
-.cat-pos-fa {
-  bottom: 18%;
-  left: 16%;
-  width: clamp(100px, 13vw, 175px);
-}
-
-/* Mi — bottom right */
-.cat-pos-mi {
-  bottom: 12%;
-  right: 14%;
-  width: clamp(100px, 13vw, 175px);
-}
-
-/* ═══════════════════════════════════════
-   MOBILE positions (<= 599px)
-   2 columns grid-like layout, no overlapping
-═══════════════════════════════════════ */
+/* Mobile: slightly smaller cats */
 @media (max-width: 599px) {
-
-  /* Re — top left */
-  .cat-pos-re {
-    top: 8%;
-    left: 5%;
-    width: 30vw;
-    transform: none;
-  }
-
-  /* So — top right */
-  .cat-pos-so {
-    top: 8%;
-    right: 5%;
-    left: auto;
-    width: 26vw;
-    transform: none;
-  }
-
-  /* Do — center middle */
-  .cat-pos-do {
-    top: 36%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 34vw;
-  }
-
-  /* Fa — bottom left */
-  .cat-pos-fa {
-    bottom: 14%;
-    left: 5%;
-    right: auto;
-    width: 30vw;
-    transform: none;
-  }
-
-  /* Mi — bottom right */
-  .cat-pos-mi {
-    bottom: 10%;
-    right: 5%;
-    left: auto;
-    width: 30vw;
-    transform: none;
+  .cat-btn {
+    width: clamp(75px, 26vw, 130px);
   }
 }
